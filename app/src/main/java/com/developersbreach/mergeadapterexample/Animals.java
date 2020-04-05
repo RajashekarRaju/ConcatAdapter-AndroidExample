@@ -18,6 +18,14 @@ public class Animals implements Parcelable {
         mAnimalName = in.readString();
     }
 
+    int getAnimalId() {
+        return mAnimalId;
+    }
+
+    String getAnimalName() {
+        return mAnimalName;
+    }
+
     public static final Creator<Animals> CREATOR = new Creator<Animals>() {
         @Override
         public Animals createFromParcel(Parcel in) {
@@ -29,14 +37,6 @@ public class Animals implements Parcelable {
             return new Animals[size];
         }
     };
-
-    int getAnimalId() {
-        return mAnimalId;
-    }
-
-    String getAnimalName() {
-        return mAnimalName;
-    }
 
     /**
      * Describe the kinds of special objects contained in this Parcelable

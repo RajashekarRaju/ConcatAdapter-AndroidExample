@@ -20,6 +20,14 @@ public class Planets implements Parcelable {
         mPlanetName = in.readString();
     }
 
+    int getPlanetId() {
+        return mPlanetId;
+    }
+
+    String getPlanetName() {
+        return mPlanetName;
+    }
+
     public static final Creator<Planets> CREATOR = new Creator<Planets>() {
         @Override
         public Planets createFromParcel(Parcel in) {
@@ -31,14 +39,6 @@ public class Planets implements Parcelable {
             return new Planets[size];
         }
     };
-
-    int getPlanetId() {
-        return mPlanetId;
-    }
-
-    String getPlanetName() {
-        return mPlanetName;
-    }
 
     /**
      * Describe the kinds of special objects contained in this Parcelable
@@ -68,4 +68,3 @@ public class Planets implements Parcelable {
         dest.writeString(mPlanetName);
     }
 }
-

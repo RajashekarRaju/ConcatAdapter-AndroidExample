@@ -2,7 +2,7 @@ package com.developersbreach.mergeadapterexample;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.MergeAdapter;
@@ -18,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
     private List<Animals> mAnimalsList;
     private List<Planets> mPlanetsList;
 
+    private MergeAdapter mMergeAdapter;
+    private AnimalAdapter mAnimalAdapter;
+    private PlanetAdapter mPlanetAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,22 +32,40 @@ public class MainActivity extends AppCompatActivity {
         addAnimalsToList();
         addPlanetsToList();
 
-        AnimalAdapter animalAdapter = new AnimalAdapter(getApplicationContext(), mAnimalsList, new AnimalItemClickListener());
-        PlanetAdapter planetAdapter = new PlanetAdapter(getApplicationContext(), mPlanetsList, new PlanerItemClickListener());
-        MergeAdapter mergeAdapter = new MergeAdapter(animalAdapter, planetAdapter);
-        recyclerView.setAdapter(mergeAdapter);
+        mAnimalAdapter = new AnimalAdapter(getApplicationContext(), mAnimalsList, new AnimalItemClickListener());
+        mPlanetAdapter = new PlanetAdapter(getApplicationContext(), mPlanetsList, new PlanerItemClickListener());
+        mMergeAdapter = new MergeAdapter(mAnimalAdapter, mPlanetAdapter);
+        recyclerView.setAdapter(mMergeAdapter);
+    }
+
+    public void removeAnimalAdapter(View view) {
+        mMergeAdapter.removeAdapter(mAnimalAdapter);
+    }
+
+    public void addAnimalAdapter(View view) {
+        mMergeAdapter.addAdapter(mAnimalAdapter);
+    }
+
+    public void removePlanetAdapter(View view) {
+        mMergeAdapter.removeAdapter(mPlanetAdapter);
+    }
+
+    public void addPlanetAdapter(View view) {
+        mMergeAdapter.addAdapter(mPlanetAdapter);
     }
 
     private void addAnimalsToList() {
         mAnimalsList = new ArrayList<>();
-        mAnimalsList.add(new Animals(1, "Lion"));
-        mAnimalsList.add(new Animals(2, "Cat"));
+        mAnimalsList.add(new Animals(1, "Cat"));
+        mAnimalsList.add(new Animals(2, "Dog"));
+        mAnimalsList.add(new Animals(3, "Giraffe"));
     }
 
     private void addPlanetsToList() {
         mPlanetsList = new ArrayList<>();
-        mPlanetsList.add(new Planets(1, "Mars"));
+        mPlanetsList.add(new Planets(1, "Mercury"));
         mPlanetsList.add(new Planets(2, "Pluto"));
+        mPlanetsList.add(new Planets(3, "Earth"));
     }
 
     private class AnimalItemClickListener implements AnimalAdapterListener {
