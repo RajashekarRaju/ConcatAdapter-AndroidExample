@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         addAnimalsToList();
         addPlanetsToList();
 
-        mAnimalAdapter = new AnimalAdapter(getApplicationContext(), mAnimalsList, new AnimalItemClickListener());
-        mPlanetAdapter = new PlanetAdapter(getApplicationContext(), mPlanetsList, new PlanerItemClickListener());
+        mAnimalAdapter = new AnimalAdapter(mAnimalsList, new AnimalItemClickListener());
+        mPlanetAdapter = new PlanetAdapter(mPlanetsList, new PlanetItemClickListener());
         mMergeAdapter = new MergeAdapter(mAnimalAdapter, mPlanetAdapter);
         recyclerView.setAdapter(mMergeAdapter);
     }
@@ -54,6 +54,24 @@ public class MainActivity extends AppCompatActivity {
         mMergeAdapter.addAdapter(mPlanetAdapter);
     }
 
+    private class AnimalItemClickListener implements AnimalAdapterListener {
+        @Override
+        public void onAnimalSelected(Animals animals) {
+            Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+            intent.putExtra(DetailActivity.INTENT_EXTRA_ANIMAL_DATA, animals);
+            startActivity(intent);
+        }
+    }
+
+    private class PlanetItemClickListener implements PlanetAdapter.PlanetAdapterListener {
+        @Override
+        public void onPlanetSelected(Planets planets) {
+            Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+            intent.putExtra(DetailActivity.INTENT_EXTRA_PLANET_DATA, planets);
+            startActivity(intent);
+        }
+    }
+
     private void addAnimalsToList() {
         mAnimalsList = new ArrayList<>();
         mAnimalsList.add(new Animals(1, "Cat"));
@@ -66,23 +84,5 @@ public class MainActivity extends AppCompatActivity {
         mPlanetsList.add(new Planets(1, "Mercury"));
         mPlanetsList.add(new Planets(2, "Pluto"));
         mPlanetsList.add(new Planets(3, "Earth"));
-    }
-
-    private class AnimalItemClickListener implements AnimalAdapterListener {
-        @Override
-        public void onAnimalSelected(Animals animals) {
-            Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
-            intent.putExtra(DetailActivity.INTENT_EXTRA_ANIMAL_DATA, animals);
-            startActivity(intent);
-        }
-    }
-
-    private class PlanerItemClickListener implements PlanetAdapter.PlanetAdapterListener {
-        @Override
-        public void onPlanetSelected(Planets planets) {
-            Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
-            intent.putExtra(DetailActivity.INTENT_EXTRA_PLANET_DATA, planets);
-            startActivity(intent);
-        }
     }
 }

@@ -1,6 +1,5 @@
 package com.developersbreach.mergeadapterexample;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +12,10 @@ import java.util.List;
 
 public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder> {
 
-    private Context mContext;
     private List<Animals> mAnimalList;
     private AnimalAdapterListener mListener;
 
-    AnimalAdapter(Context context, List<Animals> animalsList, AnimalAdapterListener listener) {
-        this.mContext = context;
+    AnimalAdapter(List<Animals> animalsList, AnimalAdapterListener listener) {
         this.mAnimalList = animalsList;
         this.mListener = listener;
     }
@@ -40,10 +37,9 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
     @NonNull
     @Override
     public AnimalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_animals, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_animals, parent, false);
         return new AnimalViewHolder(view);
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull AnimalViewHolder holder, int position) {

@@ -1,6 +1,5 @@
 package com.developersbreach.mergeadapterexample;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +12,10 @@ import java.util.List;
 
 public class PlanetAdapter extends RecyclerView.Adapter<PlanetAdapter.PlanetViewHolder> {
 
-
-    private Context mContext;
     private List<Planets> mPlanetsList;
     private PlanetAdapterListener mListener;
 
-    PlanetAdapter(Context context, List<Planets> planetsList, PlanetAdapterListener listener) {
-        this.mContext = context;
+    PlanetAdapter(List<Planets> planetsList, PlanetAdapterListener listener) {
         this.mPlanetsList = planetsList;
         this.mListener = listener;
     }
@@ -41,10 +37,9 @@ public class PlanetAdapter extends RecyclerView.Adapter<PlanetAdapter.PlanetView
     @NonNull
     @Override
     public PlanetViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_planets, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_planets, parent, false);
         return new PlanetViewHolder(view);
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull PlanetViewHolder holder, int position) {
