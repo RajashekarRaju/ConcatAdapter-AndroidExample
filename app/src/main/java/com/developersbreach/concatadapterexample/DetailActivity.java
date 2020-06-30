@@ -1,4 +1,4 @@
-package com.developersbreach.mergeadapterexample;
+package com.developersbreach.concatadapterexample;
 
 import androidx.appcompat.app.AppCompatActivity;
 

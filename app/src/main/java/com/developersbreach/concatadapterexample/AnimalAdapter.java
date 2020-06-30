@@ -1,4 +1,4 @@
-package com.developersbreach.mergeadapterexample;
+package com.developersbreach.concatadapterexample;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +12,8 @@ import java.util.List;
 
 public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder> {
 
-    private List<Animals> mAnimalList;
-    private AnimalAdapterListener mListener;
+    private final List<Animals> mAnimalList;
+    private final AnimalAdapterListener mListener;
 
     AnimalAdapter(List<Animals> animalsList, AnimalAdapterListener listener) {
         this.mAnimalList = animalsList;
@@ -26,7 +26,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
 
     static class AnimalViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView mAnimalNameTextView;
+        private final TextView mAnimalNameTextView;
 
         AnimalViewHolder(@NonNull View itemView) {
             super(itemView);

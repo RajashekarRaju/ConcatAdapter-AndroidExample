@@ -1,14 +1,14 @@
-package com.developersbreach.mergeadapterexample;
+package com.developersbreach.concatadapterexample;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.MergeAdapter;
+import androidx.recyclerview.widget.ConcatAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.developersbreach.mergeadapterexample.AnimalAdapter.AnimalAdapterListener;
+import com.developersbreach.concatadapterexample.AnimalAdapter.AnimalAdapterListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Animals> mAnimalsList;
     private List<Planets> mPlanetsList;
 
-    private MergeAdapter mMergeAdapter;
+    private ConcatAdapter mConcatAdapter;
     private AnimalAdapter mAnimalAdapter;
     private PlanetAdapter mPlanetAdapter;
 
@@ -34,24 +34,24 @@ public class MainActivity extends AppCompatActivity {
 
         mAnimalAdapter = new AnimalAdapter(mAnimalsList, new AnimalItemClickListener());
         mPlanetAdapter = new PlanetAdapter(mPlanetsList, new PlanetItemClickListener());
-        mMergeAdapter = new MergeAdapter(mAnimalAdapter, mPlanetAdapter);
-        recyclerView.setAdapter(mMergeAdapter);
+        mConcatAdapter = new ConcatAdapter(mAnimalAdapter, mPlanetAdapter);
+        recyclerView.setAdapter(mConcatAdapter);
     }
 
     public void removeAnimalAdapter(View view) {
-        mMergeAdapter.removeAdapter(mAnimalAdapter);
+        mConcatAdapter.removeAdapter(mAnimalAdapter);
     }
 
     public void addAnimalAdapter(View view) {
-        mMergeAdapter.addAdapter(mAnimalAdapter);
+        mConcatAdapter.addAdapter(mAnimalAdapter);
     }
 
     public void removePlanetAdapter(View view) {
-        mMergeAdapter.removeAdapter(mPlanetAdapter);
+        mConcatAdapter.removeAdapter(mPlanetAdapter);
     }
 
     public void addPlanetAdapter(View view) {
-        mMergeAdapter.addAdapter(mPlanetAdapter);
+        mConcatAdapter.addAdapter(mPlanetAdapter);
     }
 
     private class AnimalItemClickListener implements AnimalAdapterListener {

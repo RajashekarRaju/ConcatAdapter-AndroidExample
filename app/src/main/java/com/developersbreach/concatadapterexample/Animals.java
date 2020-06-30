@@ -1,12 +1,12 @@
-package com.developersbreach.mergeadapterexample;
+package com.developersbreach.concatadapterexample;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Animals implements Parcelable {
 
-    private int mAnimalId;
-    private String mAnimalName;
+    private final int mAnimalId;
+    private final String mAnimalName;
 
     Animals(int animalId, String animalName) {
         this.mAnimalId = animalId;

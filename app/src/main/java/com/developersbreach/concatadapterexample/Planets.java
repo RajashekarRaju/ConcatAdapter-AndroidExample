@@ -1,4 +1,4 @@
-package com.developersbreach.mergeadapterexample;
+package com.developersbreach.concatadapterexample;
 
 
 import android.os.Parcel;
@@ -7,8 +7,8 @@ import android.os.Parcelable;
 
 public class Planets implements Parcelable {
 
-    private int mPlanetId;
-    private String mPlanetName;
+    private final int mPlanetId;
+    private final String mPlanetName;
 
     Planets(int planetId, String planetName) {
         this.mPlanetId = planetId;

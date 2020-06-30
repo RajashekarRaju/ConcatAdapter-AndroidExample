@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Merge Adapter Example</string>
+    <string name="app_name">ConcatAdapter Example</string>
     <string name="remove_animal_adapter">Remove Animal Adapter</string>
     <string name="add_animal_adapter">Add Animal Adapter</string>
     <string name="remove_planet_adapter">Remove Planet Adapter</string>

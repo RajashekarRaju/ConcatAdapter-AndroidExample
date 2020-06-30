@@ -1,4 +1,4 @@
-package com.developersbreach.mergeadapterexample;
+package com.developersbreach.concatadapterexample;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +12,8 @@ import java.util.List;
 
 public class PlanetAdapter extends RecyclerView.Adapter<PlanetAdapter.PlanetViewHolder> {
 
-    private List<Planets> mPlanetsList;
-    private PlanetAdapterListener mListener;
+    private final List<Planets> mPlanetsList;
+    private final PlanetAdapterListener mListener;
 
     PlanetAdapter(List<Planets> planetsList, PlanetAdapterListener listener) {
         this.mPlanetsList = planetsList;
@@ -26,7 +26,7 @@ public class PlanetAdapter extends RecyclerView.Adapter<PlanetAdapter.PlanetView
 
     static class PlanetViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView mPlanetNameTextView;
+        private final TextView mPlanetNameTextView;
 
         PlanetViewHolder(@NonNull final View itemView) {
             super(itemView);
